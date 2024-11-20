@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxView360 - Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome for Eye Icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            position: relative;
+            background: linear-gradient(45deg, #6e7dff, #f4a261, #ff5e62, #fc6e51);
+            background-size: 400% 400%;
+            animation: gradientMove 5s ease infinite;
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Splash Screen Styles */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #6e7dff, #f4a261, #ff5e62, #fc6e51); /* Gradient background */
+            background-size: 400% 400%;
+            animation: gradientMove 5s ease infinite, fadeOut 2s ease forwards; 
+            z-index: 9999;
+            color: white;
+            font-size: 3rem;
+            font-family: 'Roboto', sans-serif; /* Nice modern font */
+        }
+        
+        /* Gradient animation for the splash screen */
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* Splash Screen Fade Out */
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* Login Container */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        /* Card Styling */
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .login-card:hover {
+            transform: scale(1.05);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #58a6ff;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Splash Screen -->
+    <div id="splashScreen" class="splash-screen">
+        <div>
+            <h1 class="text-center">TaxView360</h1>
+        </div>
+    </div>
+
+    <!-- Login Form Container -->
+    <div class="login-container">
+        <div class="login-card">
+            <h3 class="text-center mb-4">Login</h3>
+
+            <!-- Login Form -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                        <span class="input-group-text" id="eyeIcon">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember Me</label>
+                </div>
+                <div class="text-center mb-3">
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </div>
+            </form>
+
+            <div class="register-link">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Need an account?</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Register for TaxView360</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="form-group mb-3">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" class="form-control" id="fullName" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms">
+                            <label class="form-check-label" for="agreeTerms">Agree to Terms</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Password Visibility Toggle -->
+    <script>
+        const eyeIcon = document.getElementById('eyeIcon');
+        const passwordField = document.getElementById('password');
+
+        eyeIcon.addEventListener('click', () => {
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+            eyeIcon.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+    </script>
+
+    <!-- Splash Screen Removal -->
+    <script>
+        setTimeout(() => {
+            document.getElementById('splashScreen').style.display = 'none';
+        }, 2000);
+    </script>
+
+    <!-- Login Form Submission (AJAX Call) -->
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let rememberMe = document.getElementById("rememberMe").checked;
+
+            let formData = new FormData();
+            formData.append("username", username);
+            formData.append("password", password);
+            formData.append("rememberMe", rememberMe);
+
+            fetch("login.php", {
+                method: "POST",
+                body: formData
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      window.location.href = "dashboard.php";  // Redirect to the dashboard
+                  } else {
+                      alert(data.message);  // Show the error message
+                  }
+              }).catch(error => {
+                  console.error("Error:", error);
+              });
+        });
+    </script>
+
+</body>
+</html>
